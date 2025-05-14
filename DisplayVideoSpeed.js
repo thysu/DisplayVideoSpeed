@@ -64,6 +64,7 @@
         const selectBg = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
         const selectColor = isDark ? '#fff' : '#000';
         const borderColor = isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)';
+        const optionColor = isDark ? '#000' : '#fff';
 
         const panel = document.createElement('div');
         panel.style.cssText = `
@@ -109,8 +110,8 @@
                     color:${selectColor} !important;
                     appearance: none;
                 ">
-                    <option value="light">浅色主题</option>
-                    <option value="dark">深色主题</option>
+                    <option value="light" background:${optionColor}>浅色主题</option>
+                    <option value="dark" background:${optionColor}>深色主题</option>
                 </select>
             </div>
             <div class="setting-item" style="margin-bottom:12px;">
@@ -224,6 +225,9 @@
                 if (el.type === 'range') {
                     el.style.accentColor = isDark ? '#fff' : '#2196F3';
                 }
+            });
+            panel.querySelectorAll('option').forEach(el => {
+                el.style.background = isDark ? '#000' : '#fff';
             });
 
             // 更新关闭按钮样式
